@@ -19,13 +19,13 @@ public class SBPController {
     return "hello you hit root: " + data.getResult() + "!";
   }
 
-  @RequestMapping(path="/add", method = RequestMethod.GET)
+  @RequestMapping(path = "/add", method = RequestMethod.GET)
   public String add() {
     data.setResult(data.getResult() + 5);
     return "hello you hit /add: " + data.getResult() + "!";
   }
 
-  @RequestMapping(path="/sub", method=RequestMethod.GET)
+  @RequestMapping(path = "/sub", method = RequestMethod.GET)
   public String sub() {
     data.setResult(data.getResult() - 5);
     return "hello you hit /sub: " + data.getResult() + "!";
