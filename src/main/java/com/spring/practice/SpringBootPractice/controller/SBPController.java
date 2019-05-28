@@ -1,7 +1,12 @@
 package com.spring.practice.SpringBootPractice.controller;
 
-import com.spring.practice.SpringBootPractice.model.Data;
+import java.util.List;
+
+import com.spring.practice.SpringBootPractice.model.Course;
+import com.spring.practice.SpringBootPractice.service.StudentService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,23 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class SBPController {
 
   @Autowired
-  private Data data;
+  private StudentService studentService;
 
   @RequestMapping(path = "/", method = RequestMethod.GET)
   public String hello() {
-    data.setResult(4);
-    return "hello you hit root: " + data.getResult() + "!";
+    return "hello you hit root: " ;
   }
 
-  @RequestMapping(path = "/add", method = RequestMethod.GET)
-  public String add() {
-    data.setResult(data.getResult() + 5);
-    return "hello you hit /add: " + data.getResult() + "!";
+  @RequestMapping(path = "/students/{studentId}/courses", method = RequestMethod.GET)
+  public List<Course> retrieveCoursesForStudent(@PathVariable String studentId) {
+    return studentService.retrieveCourses(studentId);
   }
 
-  @RequestMapping(path = "/sub", method = RequestMethod.GET)
-  public String sub() {
-    data.setResult(data.getResult() - 5);
-    return "hello you hit /sub: " + data.getResult() + "!";
+  @RequestMapping(path = "/students/{studentId}/courses/{courseId}", method = RequestMethod.GET)
+  public Course retrieveDetailsForCourse(@PathVariable String studentId, @PathVariable String courseId) {
+    return studentService.retrieveCourse(studentId, courseId);
   }
 }
