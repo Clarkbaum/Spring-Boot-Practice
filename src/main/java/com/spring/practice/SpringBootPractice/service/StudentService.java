@@ -92,5 +92,10 @@ public class StudentService {
 				student.getCourses().add(course);
 
 				return course;
-    } 
+		} 
+		
+		public Student addStudent(Student student){
+			students.add(student);
+			return student;
+		}
 }
