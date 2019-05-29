@@ -35,7 +35,6 @@ public class SBPController {
     return studentService.retrieveStudent(studentId);
   }
 
-  //not currently working
   @RequestMapping(path = "/students/{studentId}", method = RequestMethod.POST)
   public Student addStudent(@RequestBody Student student){
     return  studentService.addStudent(student);
@@ -49,5 +48,10 @@ public class SBPController {
   @RequestMapping(path = "/students/{studentId}/courses/{courseId}", method = RequestMethod.GET)
   public Course getDetailsForCourse(@PathVariable String studentId, @PathVariable String courseId) {
     return studentService.retrieveCourse(studentId, courseId);
+  }
+
+  @RequestMapping(path = "/students/{studentId}/courses/{courseId}", method = RequestMethod.POST)
+  public Course addCourseForStudent(@PathVariable String studentId, @RequestBody Course course) {
+    return studentService.addCourse(studentId, course);
   }
 }
