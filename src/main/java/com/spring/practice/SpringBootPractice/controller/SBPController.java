@@ -15,41 +15,41 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SBPController {
 
-  @Autowired
-  private StudentService studentService;
+	@Autowired
+	private StudentService studentService;
 
-  @RequestMapping(path = "/", method = RequestMethod.GET)
-  public String hello() {
-    return "hello you hit root";
-  }
+	@RequestMapping(path = "/", method = RequestMethod.GET)
+	public String hello() {
+		return "hello you hit root";
+	}
 
-  @RequestMapping(path = "/students", method = RequestMethod.GET)
-  public List<Student> getStudents() {
-    return studentService.retrieveAllStudents();
-  }
+	@RequestMapping(path = "/students", method = RequestMethod.GET)
+	public List<Student> getStudents() {
+		return studentService.retrieveAllStudents();
+	}
 
-  @RequestMapping(path = "/students/{studentId}", method = RequestMethod.GET)
-  public Student getStudent(@PathVariable String studentId) {
-    return studentService.retrieveStudent(studentId);
-  }
+	@RequestMapping(path = "/students/{studentId}", method = RequestMethod.GET)
+	public Student getStudent(@PathVariable String studentId) {
+		return studentService.retrieveStudent(studentId);
+	}
 
-  @RequestMapping(path = "/students/{studentId}", method = RequestMethod.POST)
-  public Student addStudent(@RequestBody Student student) {
-    return studentService.addStudent(student);
-  }
+	@RequestMapping(path = "/students/{studentId}", method = RequestMethod.POST)
+	public Student addStudent(@RequestBody Student student) {
+		return studentService.addStudent(student);
+	}
 
-  @RequestMapping(path = "/students/{studentId}/courses", method = RequestMethod.GET)
-  public List<Course> getCoursesForStudent(@PathVariable String studentId) {
-    return studentService.retrieveCourses(studentId);
-  }
+	@RequestMapping(path = "/students/{studentId}/courses", method = RequestMethod.GET)
+	public List<Course> getCoursesForStudent(@PathVariable String studentId) {
+		return studentService.retrieveCourses(studentId);
+	}
 
-  @RequestMapping(path = "/students/{studentId}/courses/{courseId}", method = RequestMethod.GET)
-  public Course getDetailsForCourse(@PathVariable String studentId, @PathVariable String courseId) {
-    return studentService.retrieveCourse(studentId, courseId);
-  }
+	@RequestMapping(path = "/students/{studentId}/courses/{courseId}", method = RequestMethod.GET)
+	public Course getDetailsForCourse(@PathVariable String studentId, @PathVariable String courseId) {
+		return studentService.retrieveCourse(studentId, courseId);
+	}
 
-  @RequestMapping(path = "/students/{studentId}/courses/{courseId}", method = RequestMethod.POST)
-  public Course addCourseForStudent(@PathVariable String studentId, @RequestBody Course course) {
-    return studentService.addCourse(studentId, course);
-  }
+	@RequestMapping(path = "/students/{studentId}/courses/{courseId}", method = RequestMethod.POST)
+	public Course addCourseForStudent(@PathVariable String studentId, @RequestBody Course course) {
+		return studentService.addCourse(studentId, course);
+	}
 }
