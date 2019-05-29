@@ -1,11 +1,9 @@
 package com.spring.practice.SpringBootPractice.controller;
 
 import java.util.List;
-
 import com.spring.practice.SpringBootPractice.model.Course;
 import com.spring.practice.SpringBootPractice.model.Student;
 import com.spring.practice.SpringBootPractice.service.StudentService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +20,7 @@ public class SBPController {
 
   @RequestMapping(path = "/", method = RequestMethod.GET)
   public String hello() {
-    return "hello you hit root" ;
+    return "hello you hit root";
   }
 
   @RequestMapping(path = "/students", method = RequestMethod.GET)
@@ -36,8 +34,8 @@ public class SBPController {
   }
 
   @RequestMapping(path = "/students/{studentId}", method = RequestMethod.POST)
-  public Student addStudent(@RequestBody Student student){
-    return  studentService.addStudent(student);
+  public Student addStudent(@RequestBody Student student) {
+    return studentService.addStudent(student);
   }
 
   @RequestMapping(path = "/students/{studentId}/courses", method = RequestMethod.GET)
