@@ -1,10 +1,17 @@
 package com.spring.practice.SpringBootPractice.model;
 
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@Entity
 public class Student {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String id;
 	private String name;
 	private String description;

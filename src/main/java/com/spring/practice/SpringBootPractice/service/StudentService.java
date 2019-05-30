@@ -5,12 +5,17 @@ import java.util.Arrays;
 import java.util.List;
 import com.spring.practice.SpringBootPractice.model.Course;
 import com.spring.practice.SpringBootPractice.model.Student;
+import com.spring.practice.SpringBootPractice.repository.SpringBootPracticeRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StudentService {
 
 	private static List<Student> students = new ArrayList<>();
+
+	@Autowired
+	SpringBootPracticeRepo springBootPracticeRepo;
 
 	static {
 		// Initialize Data
@@ -36,6 +41,7 @@ public class StudentService {
 
 	// - Retrieve details for all students
 	public List<Student> retrieveAllStudents() {
+		Iterable<Student> junk = springBootPracticeRepo.findAll();
 		return students;
 	}
 
